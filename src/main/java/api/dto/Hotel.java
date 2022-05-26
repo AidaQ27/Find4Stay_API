@@ -52,10 +52,23 @@ public class Hotel {
 	}
 	
 	
-	public Hotel(char nombre, char categoria, char poblacion, char ubicacion, double precio){
-		
-	//getters and setters	
+	
+	
+	public Hotel(Long id, char nombre, char categoria, char poblacion, char ubicacion, double precio,
+			List<Reserva> reserva, Empresa empresa) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.poblacion = poblacion;
+		this.ubicacion = ubicacion;
+		this.precio = precio;
+		this.reserva = reserva;
+		this.empresa = empresa;
 	}
+
+//getters and setters	
+
 	public Long getId() {
 		return id;
 	}
@@ -92,6 +105,15 @@ public class Hotel {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "reserva")
 	public List<Reserva> getReserva() {
